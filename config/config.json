@@ -1,0 +1,8 @@
+{
+    "prefix": "!",
+    "emojis": {
+        "success": "✅",
+        "error": "❌",
+        "loading": "⏳"
+    }
+}
