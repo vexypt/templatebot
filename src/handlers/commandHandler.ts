@@ -4,7 +4,6 @@ import { SlashCommand, PrefixCommand } from "../types";
 import path from "path";
 
 export const loadCommands = async (client: Client) => {
-    // Slash Commands
     const slashCommands: any[] = [];
     const slashCommandFiles = await glob(path.join(__dirname, "../commands/slash/**/*{.ts,.js}").replace(/\\/g, "/"));
 
@@ -15,7 +14,6 @@ export const loadCommands = async (client: Client) => {
         slashCommands.push(command.command.toJSON());
     }
 
-    // Prefix Commands
     const prefixCommandFiles = await glob(path.join(__dirname, "../commands/prefix/**/*{.ts,.js}").replace(/\\/g, "/"));
 
     for (const file of prefixCommandFiles) {
@@ -24,7 +22,6 @@ export const loadCommands = async (client: Client) => {
         client.prefixCommands.set(command.name, command);
     }
 
-    // Register Slash Commands
     const rest = new REST({ version: "10" }).setToken(process.env.TOKEN || "");
     const clientId = process.env.CLIENT_ID || "";
     const guildId = process.env.GUILD_ID || "";

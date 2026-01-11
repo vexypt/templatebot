@@ -1,4 +1,4 @@
-import { Client, Events } from "discord.js";
+import { ActivityType, Client, Events } from "discord.js";
 import { BotEvent } from "../types";
 
 const event: BotEvent = {
@@ -6,7 +6,7 @@ const event: BotEvent = {
     once: true,
     execute: (client: Client) => {
         console.log(`✅ Logged in as ${client.user?.tag}`);
-        client.user?.setActivity("Scalable Bot - /ping");
+        client.user?.setActivity("Hello World!", { type: ActivityType.Playing });
     }
 };
 

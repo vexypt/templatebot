@@ -3,7 +3,6 @@ import config from "@config/config.json";
 
 export const setupExecutionHandlers = (client: Client) => {
 
-    // Slash Command Handling
     client.on(Events.InteractionCreate, async (interaction: Interaction) => {
         if (!interaction.isChatInputCommand()) return;
 
@@ -24,11 +23,9 @@ export const setupExecutionHandlers = (client: Client) => {
         }
     });
 
-    // Prefix Command Handling
     client.on(Events.MessageCreate, async (message: Message) => {
         if (message.author.bot || message.channel.type === ChannelType.DM) return;
 
-        // Dynamic Prefix
         let prefix = config.prefix;
         if (message.guildId) {
             const { Guild } = await import("@database/index");
@@ -48,7 +45,6 @@ export const setupExecutionHandlers = (client: Client) => {
 
         if (!command) return;
 
-        // Cooldown Check
         if (command.cooldown) {
             const cooldowns = client.cooldowns;
             const key = `${command.name}-${message.author.id}`;

@@ -35,7 +35,6 @@ declare module "discord.js" {
     export interface Client {
         slashCommands: Collection<string, SlashCommand>;
         prefixCommands: Collection<string, PrefixCommand>;
-        // commands: Collection<string, Command>; // Deprecated
         cooldowns: Collection<string, number>;
     }
 }
